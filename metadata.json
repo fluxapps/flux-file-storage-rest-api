@@ -1,0 +1,12 @@
+{
+    "description": "File Storage Rest Api",
+    "topics": [
+        "api",
+        "docker",
+        "file",
+        "php",
+        "rest",
+        "storage"
+    ],
+    "homepage": "https://github.com/fluxapps/flux-file-storage-rest-api"
+}
