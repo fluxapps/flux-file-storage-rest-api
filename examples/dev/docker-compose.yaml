@@ -1,0 +1,14 @@
+version: "3.6"
+services:
+    file-storage-rest-api:
+        image: docker-registry.fluxpublisher.ch/flux-file-storage/rest-api:latest
+        ports:
+            - [%host_ip%:]9501:9501
+        volumes:
+            - ./data/file-storage:/file-storage
+    other-service:
+        depends_on:
+            - file-storage-rest-api
+        environment:
+            [- FLUX_FILE_STORAGE_REST_API_HOST=file-storage-rest-api]
+            [- FLUX_FILE_STORAGE_REST_API_PORT=9501]

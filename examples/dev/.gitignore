@@ -1,0 +1,12 @@
+*
+!.gitignore
+!append.sh
+!copy.sh
+!delete.sh
+!docker-compose.yaml
+!list.sh
+!mkdir.sh
+!move.sh
+!read.sh
+!store.sh
+!touch.sh
