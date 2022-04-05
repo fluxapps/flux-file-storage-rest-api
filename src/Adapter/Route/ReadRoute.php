@@ -3,12 +3,12 @@
 namespace FluxFileStorageRestApi\Adapter\Route;
 
 use FluxFileStorageRestApi\Libs\FluxFileStorageApi\Adapter\Api\FileStorageApi;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Libs\FluxRestBaseApi\Method\DefaultMethod;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Libs\FluxRestBaseApi\Method\Method;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Libs\FluxRestBaseApi\Status\DefaultStatus;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Method\DefaultMethod;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Method\Method;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Request\RequestDto;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Response\ResponseDto;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Route\Route;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Status\DefaultStatus;
 
 class ReadRoute implements Route
 {
