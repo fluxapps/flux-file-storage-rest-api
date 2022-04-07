@@ -3,11 +3,11 @@
 namespace FluxFileStorageRestApi\Adapter\Route;
 
 use FluxFileStorageRestApi\Libs\FluxFileStorageApi\Adapter\Api\FileStorageApi;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Method\DefaultMethod;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Method\Method;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Request\RequestDto;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Response\ResponseDto;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Route\Route;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Method\DefaultMethod;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Method\Method;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Route;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Server\ServerRequestDto;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Server\ServerResponseDto;
 
 class SymlinkRoute implements Route
 {
@@ -54,7 +54,7 @@ class SymlinkRoute implements Route
     }
 
 
-    public function handle(RequestDto $request) : ?ResponseDto
+    public function handle(ServerRequestDto $request) : ?ServerResponseDto
     {
         $this->file_storage_api->symlink(
             $request->getParam(
