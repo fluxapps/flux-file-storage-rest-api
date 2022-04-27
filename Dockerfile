@@ -8,21 +8,21 @@ FROM $FLUX_NAMESPACE_CHANGER_IMAGE:latest AS flux_autoload_api_build
 ENV FLUX_NAMESPACE_CHANGER_FROM_NAMESPACE FluxAutoloadApi
 ENV FLUX_NAMESPACE_CHANGER_TO_NAMESPACE FluxFileStorageRestApi\\Libs\\FluxAutoloadApi
 COPY --from=flux_autoload_api /flux-autoload-api /code
-RUN /flux-namespace-changer/bin/docker-entrypoint.php
+RUN change-namespace
 
 FROM $FLUX_FILE_STORAGE_API_IMAGE:latest AS flux_file_storage_api
 FROM $FLUX_NAMESPACE_CHANGER_IMAGE:latest AS flux_file_storage_api_build
 ENV FLUX_NAMESPACE_CHANGER_FROM_NAMESPACE FluxFileStorageApi
 ENV FLUX_NAMESPACE_CHANGER_TO_NAMESPACE FluxFileStorageRestApi\\Libs\\FluxFileStorageApi
 COPY --from=flux_file_storage_api /flux-file-storage-api /code
-RUN /flux-namespace-changer/bin/docker-entrypoint.php
+RUN change-namespace
 
 FROM $FLUX_REST_API_IMAGE:latest AS flux_rest_api
 FROM $FLUX_NAMESPACE_CHANGER_IMAGE:latest AS flux_rest_api_build
 ENV FLUX_NAMESPACE_CHANGER_FROM_NAMESPACE FluxRestApi
 ENV FLUX_NAMESPACE_CHANGER_TO_NAMESPACE FluxFileStorageRestApi\\Libs\\FluxRestApi
 COPY --from=flux_rest_api /flux-rest-api /code
-RUN /flux-namespace-changer/bin/docker-entrypoint.php
+RUN change-namespace
 
 FROM alpine:latest AS build
 
