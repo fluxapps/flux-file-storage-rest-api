@@ -8,6 +8,9 @@ use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Body\TextBodyDto;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Body\Type\DefaultBodyType;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Method\DefaultMethod;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Method\Method;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Documentation\RouteDocumentationDto;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Documentation\RouteParamDocumentationDto;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Documentation\RouteResponseDocumentationDto;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Route;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Server\ServerRequestDto;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Server\ServerResponseDto;
@@ -32,17 +35,39 @@ class StoreRoute implements Route
     }
 
 
-    public function getDocuRequestBodyTypes() : ?array
+    public function getDocumentation() : ?RouteDocumentationDto
     {
-        return [
-            DefaultBodyType::JSON
-        ];
-    }
-
-
-    public function getDocuRequestQueryParams() : ?array
-    {
-        return null;
+        return RouteDocumentationDto::new(
+            $this->getRoute(),
+            $this->getMethod(),
+            "Store data to file",
+            null,
+            [
+                RouteParamDocumentationDto::new(
+                    "path",
+                    "string",
+                    "File path"
+                )
+            ],
+            null,
+            [
+                RouteResponseDocumentationDto::new(
+                    DefaultBodyType::JSON,
+                    null,
+                    "object",
+                    "Data"
+                )
+            ],
+            [
+                RouteResponseDocumentationDto::new(),
+                RouteResponseDocumentationDto::new(
+                    DefaultBodyType::TEXT,
+                    DefaultStatus::_400,
+                    null,
+                    "No json body"
+                )
+            ]
+        );
     }
 
 

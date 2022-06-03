@@ -8,6 +8,10 @@ use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Body\TextBodyDto;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Body\Type\DefaultBodyType;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Method\DefaultMethod;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Method\Method;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Documentation\RouteContentTypeDocumentationDto;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Documentation\RouteDocumentationDto;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Documentation\RouteParamDocumentationDto;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Documentation\RouteResponseDocumentationDto;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Route;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Server\ServerRequestDto;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Server\ServerResponseDto;
@@ -32,22 +36,59 @@ class UploadRoute implements Route
     }
 
 
-    public function getDocuRequestBodyTypes() : ?array
+    public function getDocumentation() : ?RouteDocumentationDto
     {
-        return [
-            DefaultBodyType::FORM_DATA_2
-        ];
-    }
-
-
-    public function getDocuRequestQueryParams() : ?array
-    {
-        return [
-            "extract_override",
-            "extract_delete",
-            "extract_to_path",
-            "override"
-        ];
+        return RouteDocumentationDto::new(
+            $this->getRoute(),
+            $this->getMethod(),
+            "Upload file",
+            null,
+            [
+                RouteParamDocumentationDto::new(
+                    "to_path",
+                    "string",
+                    "Destination path"
+                )
+            ],
+            [
+                RouteParamDocumentationDto::new(
+                    "extract_delete",
+                    "bool",
+                    "Not keep uploaded file after extract"
+                ),
+                RouteParamDocumentationDto::new(
+                    "extract_override",
+                    "bool",
+                    "Override extract destination if exists"
+                ),
+                RouteParamDocumentationDto::new(
+                    "extract_to_path",
+                    "string",
+                    "Extract destination path"
+                ),
+                RouteParamDocumentationDto::new(
+                    "override",
+                    "bool",
+                    "Override destination if exists"
+                )
+            ],
+            [
+                RouteContentTypeDocumentationDto::new(
+                    DefaultBodyType::FORM_DATA_2,
+                    "object",
+                    "File"
+                )
+            ],
+            [
+                RouteResponseDocumentationDto::new(),
+                RouteResponseDocumentationDto::new(
+                    DefaultBodyType::TEXT,
+                    DefaultStatus::_400,
+                    null,
+                    "No form data body"
+                )
+            ]
+        );
     }
 
 
