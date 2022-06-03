@@ -5,6 +5,9 @@ namespace FluxFileStorageRestApi\Adapter\Route;
 use FluxFileStorageRestApi\Libs\FluxFileStorageApi\Adapter\Api\FileStorageApi;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Method\DefaultMethod;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Method\Method;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Documentation\RouteDocumentationDto;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Documentation\RouteParamDocumentationDto;
+use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Documentation\RouteResponseDocumentationDto;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Route;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Server\ServerRequestDto;
 use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Server\ServerResponseDto;
@@ -28,15 +31,26 @@ class DeleteRoute implements Route
     }
 
 
-    public function getDocuRequestBodyTypes() : ?array
+    public function getDocumentation() : ?RouteDocumentationDto
     {
-        return null;
-    }
-
-
-    public function getDocuRequestQueryParams() : ?array
-    {
-        return null;
+        return RouteDocumentationDto::new(
+            $this->getRoute(),
+            $this->getMethod(),
+            "Delete file or folder",
+            null,
+            [
+                RouteParamDocumentationDto::new(
+                    "path",
+                    "string",
+                    "Path"
+                )
+            ],
+            null,
+            null,
+            [
+                RouteResponseDocumentationDto::new()
+            ]
+        );
     }
 
 
