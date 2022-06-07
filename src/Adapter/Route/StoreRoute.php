@@ -85,7 +85,7 @@ class StoreRoute implements Route
 
     public function handle(ServerRequestDto $request) : ?ServerResponseDto
     {
-        if (!($request->getParsedBody() instanceof JsonBodyDto)) {
+        if (!($request->parsed_body instanceof JsonBodyDto)) {
             return ServerResponseDto::new(
                 TextBodyDto::new(
                     "No json body"
@@ -98,7 +98,7 @@ class StoreRoute implements Route
             $request->getParam(
                 "path"
             ),
-            $request->getParsedBody()->getData()->data
+            $request->parsed_body->data->data
         );
 
         return null;
