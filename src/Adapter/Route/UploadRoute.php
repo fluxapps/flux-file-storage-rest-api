@@ -106,7 +106,7 @@ class UploadRoute implements Route
 
     public function handle(ServerRequestDto $request) : ?ServerResponseDto
     {
-        if (!($request->getParsedBody() instanceof FormDataBodyDto)) {
+        if (!($request->parsed_body instanceof FormDataBodyDto)) {
             return ServerResponseDto::new(
                 TextBodyDto::new(
                     "No form data body"
@@ -116,7 +116,7 @@ class UploadRoute implements Route
         }
 
         $this->file_storage_api->upload(
-            $request->getParsedBody()->getFiles()["file"]["tmp_name"],
+            $request->parsed_body->files["file"]["tmp_name"],
             $request->getParam(
                 "to_path"
             ),
