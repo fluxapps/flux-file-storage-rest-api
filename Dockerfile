@@ -20,10 +20,12 @@ RUN change-namespace /code/flux-rest-api FluxRestApi FluxFileStorageRestApi\\Lib
 
 FROM alpine:latest AS build
 
-COPY --from=build_namespaces /code/flux-autoload-api /flux-file-storage-rest-api/libs/flux-autoload-api
-COPY --from=build_namespaces /code/flux-file-storage-api /flux-file-storage-rest-api/libs/flux-file-storage-api
-COPY --from=build_namespaces /code/flux-rest-api /flux-file-storage-rest-api/libs/flux-rest-api
-COPY . /flux-file-storage-rest-api
+COPY --from=build_namespaces /code/flux-autoload-api /build/flux-file-storage-rest-api/libs/flux-autoload-api
+COPY --from=build_namespaces /code/flux-file-storage-api /build/flux-file-storage-rest-api/libs/flux-file-storage-api
+COPY --from=build_namespaces /code/flux-rest-api /build/flux-file-storage-rest-api/libs/flux-rest-api
+COPY . /build/flux-file-storage-rest-api
+
+RUN (cd /build && tar -czf flux-file-storage-rest-api.tar.gz flux-file-storage-rest-api)
 
 FROM php:8.1-cli-alpine
 
@@ -44,7 +46,7 @@ EXPOSE 9501
 
 ENTRYPOINT ["/flux-file-storage-rest-api/bin/server.php"]
 
-COPY --from=build /flux-file-storage-rest-api /flux-file-storage-rest-api
+COPY --from=build /build /
 
 ARG COMMIT_SHA
 LABEL org.opencontainers.image.revision="$COMMIT_SHA"
