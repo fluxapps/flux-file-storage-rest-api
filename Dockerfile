@@ -1,7 +1,7 @@
-ARG FLUX_AUTOLOAD_API_IMAGE=docker-registry.fluxpublisher.ch/flux-autoload-api
-ARG FLUX_FILE_STORAGE_API_IMAGE=docker-registry.fluxpublisher.ch/flux-file-storage-api
+ARG FLUX_AUTOLOAD_API_IMAGE
+ARG FLUX_FILE_STORAGE_API_IMAGE
 ARG FLUX_NAMESPACE_CHANGER_IMAGE=docker-registry.fluxpublisher.ch/flux-namespace-changer
-ARG FLUX_REST_API_IMAGE=docker-registry.fluxpublisher.ch/flux-rest-api
+ARG FLUX_REST_API_IMAGE
 
 FROM $FLUX_AUTOLOAD_API_IMAGE:v2022-06-22-1 AS flux_autoload_api
 FROM $FLUX_FILE_STORAGE_API_IMAGE:v2022-07-05-1 AS flux_file_storage_api
