@@ -12,7 +12,7 @@ docker exec -u root:root %container_name% chown www-data:www-data -R /file-stora
 
 ## Environment variables
 
-First look at [flux-file-storage-api](https://github.com/flux-eco/flux-file-storage-api#environment-variables)
+First look at [flux-file-storage-api](https://github.com/fluxfw/flux-file-storage-api#environment-variables)
 
 | Variable | Description | Default value |
 | -------- | ----------- | ------------- |
