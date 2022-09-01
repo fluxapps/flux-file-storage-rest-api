@@ -17,7 +17,7 @@ LABEL org.opencontainers.image.source="https://github.com/fluxfw/flux-file-stora
 RUN apk add --no-cache libstdc++ libzip && \
     apk add --no-cache --virtual .build-deps $PHPIZE_DEPS curl-dev libzip-dev openssl-dev && \
     (mkdir -p /usr/src/php/ext/swoole && cd /usr/src/php/ext/swoole && wget -O - https://pecl.php.net/get/swoole | tar -xz --strip-components=1) && \
-    docker-php-ext-configure swoole --enable-openssl --enable-swoole-curl --enable-swoole-json && \
+    docker-php-ext-configure swoole --enable-openssl --enable-swoole-curl && \
     docker-php-ext-install -j$(nproc) swoole zip && \
     docker-php-source delete && \
     apk del .build-deps
