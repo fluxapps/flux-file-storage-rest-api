@@ -2,10 +2,10 @@
 
 namespace FluxFileStorageRestApi\Adapter\Server;
 
-use FluxFileStorageRestApi\Libs\FluxFileStorageApi\Adapter\Api\FileStorageApi;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Api\RestApi;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Collector\RouteCollector;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Server\SwooleServerConfigDto;
+use FluxFileStorageApi\Adapter\Api\FileStorageApi;
+use FluxRestApi\Adapter\Api\RestApi;
+use FluxRestApi\Adapter\Route\Collector\RouteCollector;
+use FluxRestApi\Adapter\Server\SwooleServerConfigDto;
 
 class FileStorageRestApiServer
 {
