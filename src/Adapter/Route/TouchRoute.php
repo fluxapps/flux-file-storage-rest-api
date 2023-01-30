@@ -2,15 +2,15 @@
 
 namespace FluxFileStorageRestApi\Adapter\Route;
 
-use FluxFileStorageRestApi\Libs\FluxFileStorageApi\Adapter\Api\FileStorageApi;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Method\DefaultMethod;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Method\Method;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Documentation\RouteDocumentationDto;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Documentation\RouteParamDocumentationDto;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Documentation\RouteResponseDocumentationDto;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Route;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Server\ServerRequestDto;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Server\ServerResponseDto;
+use FluxFileStorageApi\Adapter\Api\FileStorageApi;
+use FluxRestApi\Adapter\Method\DefaultMethod;
+use FluxRestApi\Adapter\Method\Method;
+use FluxRestApi\Adapter\Route\Documentation\RouteDocumentationDto;
+use FluxRestApi\Adapter\Route\Documentation\RouteParamDocumentationDto;
+use FluxRestApi\Adapter\Route\Documentation\RouteResponseDocumentationDto;
+use FluxRestApi\Adapter\Route\Route;
+use FluxRestApi\Adapter\Server\ServerRequestDto;
+use FluxRestApi\Adapter\Server\ServerResponseDto;
 
 class TouchRoute implements Route
 {

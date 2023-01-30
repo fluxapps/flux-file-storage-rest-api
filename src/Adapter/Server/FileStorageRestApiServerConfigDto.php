@@ -2,7 +2,7 @@
 
 namespace FluxFileStorageRestApi\Adapter\Server;
 
-use FluxFileStorageRestApi\Libs\FluxFileStorageApi\Adapter\Api\FileStorageApiConfigDto;
+use FluxFileStorageApi\Adapter\Api\FileStorageApiConfigDto;
 
 class FileStorageRestApiServerConfigDto
 {

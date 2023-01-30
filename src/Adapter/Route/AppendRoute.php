@@ -2,19 +2,19 @@
 
 namespace FluxFileStorageRestApi\Adapter\Route;
 
-use FluxFileStorageRestApi\Libs\FluxFileStorageApi\Adapter\Api\FileStorageApi;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Body\JsonBodyDto;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Body\TextBodyDto;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Body\Type\DefaultBodyType;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Method\DefaultMethod;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Method\Method;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Documentation\RouteDocumentationDto;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Documentation\RouteParamDocumentationDto;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Documentation\RouteResponseDocumentationDto;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Route;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Server\ServerRequestDto;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Server\ServerResponseDto;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Status\DefaultStatus;
+use FluxFileStorageApi\Adapter\Api\FileStorageApi;
+use FluxRestApi\Adapter\Body\JsonBodyDto;
+use FluxRestApi\Adapter\Body\TextBodyDto;
+use FluxRestApi\Adapter\Body\Type\DefaultBodyType;
+use FluxRestApi\Adapter\Method\DefaultMethod;
+use FluxRestApi\Adapter\Method\Method;
+use FluxRestApi\Adapter\Route\Documentation\RouteDocumentationDto;
+use FluxRestApi\Adapter\Route\Documentation\RouteParamDocumentationDto;
+use FluxRestApi\Adapter\Route\Documentation\RouteResponseDocumentationDto;
+use FluxRestApi\Adapter\Route\Route;
+use FluxRestApi\Adapter\Server\ServerRequestDto;
+use FluxRestApi\Adapter\Server\ServerResponseDto;
+use FluxRestApi\Adapter\Status\DefaultStatus;
 
 class AppendRoute implements Route
 {

@@ -2,6 +2,7 @@
 
 namespace FluxFileStorageRestApi\Adapter\Server;
 
+use FluxFileStorageApi\Adapter\Api\FileStorageApi;
 use FluxFileStorageRestApi\Adapter\Route\AppendRoute;
 use FluxFileStorageRestApi\Adapter\Route\CopyRoute;
 use FluxFileStorageRestApi\Adapter\Route\DeleteRoute;
@@ -15,8 +16,7 @@ use FluxFileStorageRestApi\Adapter\Route\StoreRoute;
 use FluxFileStorageRestApi\Adapter\Route\SymlinkRoute;
 use FluxFileStorageRestApi\Adapter\Route\TouchRoute;
 use FluxFileStorageRestApi\Adapter\Route\UploadRoute;
-use FluxFileStorageRestApi\Libs\FluxFileStorageApi\Adapter\Api\FileStorageApi;
-use FluxFileStorageRestApi\Libs\FluxRestApi\Adapter\Route\Collector\RouteCollector;
+use FluxRestApi\Adapter\Route\Collector\RouteCollector;
 
 class FileStorageRestApiServerRouteCollector implements RouteCollector
 {
