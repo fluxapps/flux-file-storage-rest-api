@@ -1,10 +1,11 @@
 FROM php:8.2-cli-alpine AS build
 
-RUN (mkdir -p /build/flux-file-storage-rest-api/libs/flux-file-storage-api && cd /build/flux-file-storage-rest-api/libs/flux-file-storage-api && wget -O - https://github.com/fluxfw/flux-file-storage-api/archive/refs/tags/v2023-01-30-1.tar.gz | tar -xz --strip-components=1)
+COPY bin/install-libraries.sh /build/flux-file-storage-rest-api/libs/flux-file-storage-rest-api/bin/install-libraries.sh
+RUN /build/flux-file-storage-rest-api/libs/flux-file-storage-rest-api/bin/install-libraries.sh
 
-RUN (mkdir -p /build/flux-file-storage-rest-api/libs/flux-rest-api && cd /build/flux-file-storage-rest-api/libs/flux-rest-api && wget -O - https://github.com/fluxfw/flux-rest-api/archive/refs/tags/v2023-01-30-1.tar.gz | tar -xz --strip-components=1)
+RUN ln -s libs/flux-file-storage-rest-api/bin /build/flux-file-storage-rest-api/bin
 
-COPY . /build/flux-file-storage-rest-api
+COPY . /build/flux-file-storage-rest-api/libs/flux-file-storage-rest-api
 
 FROM php:8.2-cli-alpine
 
@@ -23,6 +24,3 @@ EXPOSE 9501
 ENTRYPOINT ["/flux-file-storage-rest-api/bin/server.php"]
 
 COPY --from=build /build /
-
-ARG COMMIT_SHA
-LABEL org.opencontainers.image.revision="$COMMIT_SHA"
