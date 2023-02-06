@@ -2,13 +2,13 @@
 
 namespace FluxFileStorageRestApi\Adapter\Server;
 
-use FluxFileStorageApi\Adapter\Api\FileStorageApiConfigDto;
+use FluxFileStorageRestApi\Adapter\Api\FileStorageRestApiConfigDto;
 
 class FileStorageRestApiServerConfigDto
 {
 
     private function __construct(
-        public readonly FileStorageApiConfigDto $file_storage_api_config,
+        public readonly FileStorageRestApiConfigDto $file_storage_rest_api_config,
         public readonly ?string $https_cert,
         public readonly ?string $https_key,
         public readonly string $listen,
@@ -20,7 +20,7 @@ class FileStorageRestApiServerConfigDto
 
 
     public static function new(
-        FileStorageApiConfigDto $file_storage_api_config,
+        FileStorageRestApiConfigDto $file_storage_rest_api_config,
         ?string $https_cert = null,
         ?string $https_key = null,
         ?string $listen = null,
@@ -28,7 +28,7 @@ class FileStorageRestApiServerConfigDto
         ?int $max_upload_size = null
     ) : static {
         return new static(
-            $file_storage_api_config,
+            $file_storage_rest_api_config,
             $https_cert,
             $https_key,
             $listen ?? "0.0.0.0",
@@ -41,7 +41,7 @@ class FileStorageRestApiServerConfigDto
     public static function newFromEnv() : static
     {
         return static::new(
-            FileStorageApiConfigDto::newFromEnv(),
+            FileStorageRestApiConfigDto::newFromEnv(),
             $_ENV["FLUX_FILE_STORAGE_REST_API_SERVER_HTTPS_CERT"] ?? null,
             $_ENV["FLUX_FILE_STORAGE_REST_API_SERVER_HTTPS_KEY"] ?? null,
             $_ENV["FLUX_FILE_STORAGE_REST_API_SERVER_LISTEN"] ?? null,

@@ -6,6 +6,12 @@ Changes:
 
 \-
 
+## v2023-02-06-1
+
+Changes:
+
+- Include `flux-file-storage-api`
+
 ## v2023-01-31-1
 
 Changes:

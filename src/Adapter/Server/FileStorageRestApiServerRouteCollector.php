@@ -2,7 +2,7 @@
 
 namespace FluxFileStorageRestApi\Adapter\Server;
 
-use FluxFileStorageApi\Adapter\Api\FileStorageApi;
+use FluxFileStorageRestApi\Adapter\Api\FileStorageRestApi;
 use FluxFileStorageRestApi\Adapter\Route\AppendRoute;
 use FluxFileStorageRestApi\Adapter\Route\CopyRoute;
 use FluxFileStorageRestApi\Adapter\Route\DeleteRoute;
@@ -22,17 +22,17 @@ class FileStorageRestApiServerRouteCollector implements RouteCollector
 {
 
     private function __construct(
-        private readonly FileStorageApi $file_storage_api
+        private readonly FileStorageRestApi $file_storage_rest_api
     ) {
 
     }
 
 
     public static function new(
-        FileStorageApi $file_storage_api
+        FileStorageRestApi $file_storage_rest_api
     ) : static {
         return new static(
-            $file_storage_api
+            $file_storage_rest_api
         );
     }
 
@@ -41,43 +41,43 @@ class FileStorageRestApiServerRouteCollector implements RouteCollector
     {
         return [
             AppendRoute::new(
-                $this->file_storage_api
+                $this->file_storage_rest_api
             ),
             CopyRoute::new(
-                $this->file_storage_api
+                $this->file_storage_rest_api
             ),
             DeleteRoute::new(
-                $this->file_storage_api
+                $this->file_storage_rest_api
             ),
             ExistsRoute::new(
-                $this->file_storage_api
+                $this->file_storage_rest_api
             ),
             ExtractRoute::new(
-                $this->file_storage_api
+                $this->file_storage_rest_api
             ),
             ListRoute::new(
-                $this->file_storage_api
+                $this->file_storage_rest_api
             ),
             MkdirRoute::new(
-                $this->file_storage_api
+                $this->file_storage_rest_api
             ),
             MoveRoute::new(
-                $this->file_storage_api
+                $this->file_storage_rest_api
             ),
             ReadRoute::new(
-                $this->file_storage_api
+                $this->file_storage_rest_api
             ),
             StoreRoute::new(
-                $this->file_storage_api
+                $this->file_storage_rest_api
             ),
             SymlinkRoute::new(
-                $this->file_storage_api
+                $this->file_storage_rest_api
             ),
             TouchRoute::new(
-                $this->file_storage_api
+                $this->file_storage_rest_api
             ),
             UploadRoute::new(
-                $this->file_storage_api
+                $this->file_storage_rest_api
             )
         ];
     }
