@@ -2,7 +2,7 @@
 
 namespace FluxFileStorageRestApi\Adapter\Route;
 
-use FluxFileStorageApi\Adapter\Api\FileStorageApi;
+use FluxFileStorageRestApi\Adapter\Api\FileStorageRestApi;
 use FluxRestApi\Adapter\Body\FormDataBodyDto;
 use FluxRestApi\Adapter\Body\TextBodyDto;
 use FluxRestApi\Adapter\Body\Type\DefaultBodyType;
@@ -21,17 +21,17 @@ class UploadRoute implements Route
 {
 
     private function __construct(
-        private readonly FileStorageApi $file_storage_api
+        private readonly FileStorageRestApi $file_storage_rest_api
     ) {
 
     }
 
 
     public static function new(
-        FileStorageApi $file_storage_api
+        FileStorageRestApi $file_storage_rest_api
     ) : static {
         return new static(
-            $file_storage_api
+            $file_storage_rest_api
         );
     }
 
@@ -115,7 +115,7 @@ class UploadRoute implements Route
             );
         }
 
-        $this->file_storage_api->upload(
+        $this->file_storage_rest_api->upload(
             $request->parsed_body->files["file"]["tmp_name"],
             $request->getParam(
                 "to_path"

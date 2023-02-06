@@ -2,7 +2,7 @@
 
 namespace FluxFileStorageRestApi\Adapter\Server;
 
-use FluxFileStorageApi\Adapter\Api\FileStorageApi;
+use FluxFileStorageRestApi\Adapter\Api\FileStorageRestApi;
 use FluxRestApi\Adapter\Api\RestApi;
 use FluxRestApi\Adapter\Route\Collector\RouteCollector;
 use FluxRestApi\Adapter\Server\SwooleServerConfigDto;
@@ -27,8 +27,8 @@ class FileStorageRestApiServer
         return new static(
             RestApi::new(),
             FileStorageRestApiServerRouteCollector::new(
-                FileStorageApi::new(
-                    $file_storage_rest_api_server_config->file_storage_api_config
+                FileStorageRestApi::new(
+                    $file_storage_rest_api_server_config->file_storage_rest_api_config
                 )
             ),
             SwooleServerConfigDto::new(

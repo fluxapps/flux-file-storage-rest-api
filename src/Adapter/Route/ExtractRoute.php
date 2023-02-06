@@ -2,7 +2,7 @@
 
 namespace FluxFileStorageRestApi\Adapter\Route;
 
-use FluxFileStorageApi\Adapter\Api\FileStorageApi;
+use FluxFileStorageRestApi\Adapter\Api\FileStorageRestApi;
 use FluxRestApi\Adapter\Method\DefaultMethod;
 use FluxRestApi\Adapter\Method\Method;
 use FluxRestApi\Adapter\Route\Documentation\RouteDocumentationDto;
@@ -16,17 +16,17 @@ class ExtractRoute implements Route
 {
 
     private function __construct(
-        private readonly FileStorageApi $file_storage_api
+        private readonly FileStorageRestApi $file_storage_rest_api
     ) {
 
     }
 
 
     public static function new(
-        FileStorageApi $file_storage_api
+        FileStorageRestApi $file_storage_rest_api
     ) : static {
         return new static(
-            $file_storage_api
+            $file_storage_rest_api
         );
     }
 
@@ -84,7 +84,7 @@ class ExtractRoute implements Route
 
     public function handle(ServerRequestDto $request) : ?ServerResponseDto
     {
-        $this->file_storage_api->extract(
+        $this->file_storage_rest_api->extract(
             $request->getParam(
                 "path"
             ),

@@ -2,8 +2,8 @@
 
 namespace FluxFileStorageRestApi\Adapter\Route;
 
-use FluxFileStorageApi\Adapter\Api\FileStorageApi;
-use FluxFileStorageApi\Adapter\File\FileDto;
+use FluxFileStorageRestApi\Adapter\Api\FileStorageRestApi;
+use FluxFileStorageRestApi\Adapter\File\FileDto;
 use FluxRestApi\Adapter\Body\JsonBodyDto;
 use FluxRestApi\Adapter\Body\Type\DefaultBodyType;
 use FluxRestApi\Adapter\Method\DefaultMethod;
@@ -20,17 +20,17 @@ class ListRoute implements Route
 {
 
     private function __construct(
-        private readonly FileStorageApi $file_storage_api
+        private readonly FileStorageRestApi $file_storage_rest_api
     ) {
 
     }
 
 
     public static function new(
-        FileStorageApi $file_storage_api
+        FileStorageRestApi $file_storage_rest_api
     ) : static {
         return new static(
-            $file_storage_api
+            $file_storage_rest_api
         );
     }
 
@@ -77,7 +77,7 @@ class ListRoute implements Route
 
     public function handle(ServerRequestDto $request) : ?ServerResponseDto
     {
-        $files = $this->file_storage_api->list(
+        $files = $this->file_storage_rest_api->list(
             $request->getParam(
                 "path"
             )

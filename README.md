@@ -12,10 +12,9 @@ docker exec -u root:root %container_name% chown www-data:www-data -R /file-stora
 
 ## Environment variables
 
-First look at [flux-file-storage-api](https://github.com/fluxfw/flux-file-storage-api#environment-variables)
-
 | Variable | Description | Default value |
 | -------- | ----------- | ------------- |
+| **FLUX_FILE_STORAGE_REST_API_STORAGE_FOLDER** | Storage directory | /file-storage |
 | FLUX_FILE_STORAGE_REST_API_SERVER_HTTPS_CERT | Path to HTTPS certificate file<br>Set this will enable listen on HTTPS<br>Should be on a volume | *-* |
 | FLUX_FILE_STORAGE_REST_API_SERVER_HTTPS_KEY | Path to HTTPS key file<br>Should be on a volume | *-* |
 | FLUX_FILE_STORAGE_REST_API_SERVER_LISTEN | Listen IP | 0.0.0.0 |
